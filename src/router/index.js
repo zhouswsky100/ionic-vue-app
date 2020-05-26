@@ -1,32 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const Index = () => import('@/page/Index');
-const Me = () => import('@/page/Me');
-const About = () => import('@/page/About');
+const layout = () => import('@/page/layout');
+const home = () => import('@/page/home');
+const me = () => import('@/page/me');
+const about = () => import('@/page/about');
 Vue.use(Router)
 
 export default new Router({
     routes: [
         {
             path: '/',
-            name: 'Index',
-            component: Index,
-            redirect: 'Index',
+            component: layout,
             children: [
                 {
-                    path: '/Me',
-                    name: 'Me',
-                    component: Me
+                    path: '/',
+                    name: 'home',
+                    component: home
                 },
                 {
-                    path: '/Index',
-                    name: 'Index',
-                    component: Index
+                    path: '/home',
+                    name: 'home',
+                    component: home
                 },
                 {
-                    path: '/About',
-                    name: 'About',
-                    component: About
+                    path: '/about',
+                    name: 'about',
+                    component: about
+                },
+                {
+                    path: '/me',
+                    name: 'me',
+                    component: me
                 }
             ]
         }

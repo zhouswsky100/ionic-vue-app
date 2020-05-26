@@ -1,11 +1,7 @@
 <template>
-  <div class="about">
-    <ion-app>
-      <my-header :activeTab="activeTab">
-    </my-header>
-      <ion-content>
-        <my-tabs></my-tabs>
-      </ion-content>
+  <div class="index">
+     <ion-app>
+      <router-view/>
     </ion-app>
   </div>
 </template>
@@ -17,18 +13,13 @@ import MyTabs from '@/components/Tabs/Tabs';
 export default {
     data() {
         return {
-            activeTab: '创新'
+            activeTab: '首页'
         };
-    },
-    mounted(){
-
     },
     created() {
     },
     watch: {},
     methods: {
-
-
     },
     components: {
         'my-header': MyHeader,

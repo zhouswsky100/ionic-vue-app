@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="me">
     <ion-app>
       <my-header :activeTab="activeTab">
     </my-header>
@@ -17,10 +17,11 @@ import MyTabs from '@/components/Tabs/Tabs';
 export default {
     data() {
         return {
-            activeTab: '首页'
+            activeTab: '我的'
         };
     },
     created() {
+      
     },
     watch: {},
     methods: {

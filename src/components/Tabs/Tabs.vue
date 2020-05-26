@@ -1,103 +1,63 @@
 <template>
-  <div class="tabs">
-    <div @click="activeTab = item.name" class="each-tabs" v-for="item of tabsData" :key="item.name" :class="[item.name == activeTab ?  'active' : '']">
-      <div class="icon">
-        <icon-svg :icon-class="item.icon" />
-      </div>
-      <div class="name">
-        {{item.name}}
-      </div>
-    </div>
-  </div>
+  <ion-tabs>
+    <ion-tab tab="me" >
+    </ion-tab>
+    <ion-tab tab="about">
+    </ion-tab>
+    <ion-tab tab="home">
+    </ion-tab>
+    <template slot="bottom">
+        <ion-tab-bar>
+            <ion-tab-button tab="home" @click="tabClick('3')">
+            <ion-icon name="home"></ion-icon>
+                <ion-label>首页</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="about" @click="tabClick('2')">
+                <ion-icon name="book"></ion-icon>
+                <ion-label>看看</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="me" @click="tabClick('1')">
+                <ion-icon name="person"></ion-icon>
+                <ion-label>我的</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </template>
+  </ion-tabs>
 </template>
 
 <script type="text/ecmascript-6">
+import {
+    mapState,
+    mapActions
+} from "vuex"
 export default {
     data() {
       return {
-        activeTab: 'kpi',
-        tabsData:[ {name: '创新', icon: 'kpi'}, {name: '首页', icon: 'shishi'}, {name: '我的', icon: 'wode'}]
+          footer_hide_item_flag: false
       }
     },
-    created(){
-        let activeTab = this.$route.path.split('/')[1];
-        switch (activeTab) {
-            case '首页':
-                this.activeTab = '首页';
-                break;
-            case '创新':
-                this.activeTab = '创新';
-                break;
-            case '我的':
-                this.activeTab = '我的';
-                break;
-        }
+    computed: {
+        ...mapState(['footer_tab'])
     },
-    watch: {
-        $route() {
-            let activeTab = this.$route.path.split('/')[1];
-            switch (activeTab) {
-              case '首页':
-                this.activeTab = '首页';
-                break;
-              case '创新':
-                this.activeTab = '创新';
-                break;
-              case '我的':
-                this.activeTab = '我的';
-                break;
-            }
-        },
-        activeTab(newValue) {
-            this.activeTab = newValue;
-            switch (newValue) {
-                case '首页':
-                    this.$router.push({path: '/Index'})
-                    break;
-                case '创新':
-                    this.$router.push({path: '/About'})
-                    break;
-                case '我的':
-                    this.$router.push({path: '/Me'})
-                    break;
+    methods: {
+        ...mapActions(['CHANGE_FOOTERTAB']),
+        tabClick: function(tab){
+            if(tab == '1'){
+                this.$store.commit('CHANGE_FOOTERTAB', 1)
+                // this.$router.push('/home');
+            }else if(tab == '2'){
+                this.$store.commit('CHANGE_FOOTERTAB', 2)
+                // this.$router.push('/about');
+            }else if(tab == '3'){
+                this.$store.commit('CHANGE_FOOTERTAB', 3)
+                // this.$router.push('/me');
             }
         }
     }
+  
 }
 </script>
 
 <style lang="less" scoped>
-  @import "../../common/css/index.less";
-  .tabs {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    width: 100vw;
-    border-top: solid 1px #eee;
-    z-index: 1000;
-    background: #fff;
-    .each-tabs {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      color: @font-dark-color;
-      .icon {
-        height: 29px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;
-      }
-      .name {
-        height: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 10px;
-      }
-      &.active {
-        color: @font-active-color;
-      }
-    }
-  }
+  
 </style>
