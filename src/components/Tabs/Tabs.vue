@@ -2,8 +2,6 @@
   <ion-tabs>
     <ion-tab tab="me" >
     </ion-tab>
-    <ion-tab tab="about">
-    </ion-tab>
     <ion-tab tab="home">
     </ion-tab>
     <template slot="bottom">
@@ -11,10 +9,6 @@
             <ion-tab-button tab="home" @click="tabClick('3')">
             <ion-icon name="home"></ion-icon>
                 <ion-label>首页</ion-label>
-            </ion-tab-button>
-            <ion-tab-button tab="about" @click="tabClick('2')">
-                <ion-icon name="book"></ion-icon>
-                <ion-label>看看</ion-label>
             </ion-tab-button>
             <ion-tab-button tab="me" @click="tabClick('1')">
                 <ion-icon name="person"></ion-icon>

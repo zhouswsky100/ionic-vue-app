@@ -2,7 +2,10 @@
   <div class="me">
     <ion-app>
       <keep-alive>
-        <my-header :activeTab="activeTab">  </my-header>
+        <my-header :activeTab="activeTab"> 
+          <div slot="left">去分享</div>  
+          <div slot="right">去快乐</div>  
+        </my-header>
       </keep-alive>
       <ion-content>
         <my-tabs></my-tabs>
@@ -18,7 +21,7 @@ import MyTabs from '@/components/Tabs/Tabs';
 export default {
     data() {
         return {
-            activeTab: '我的'
+            activeTab: '首页'
         };
     },
     created() {

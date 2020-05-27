@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import { IonicVueRouter } from '@ionic/vue'
 const layout = () => import('@/page/layout');
 const home = () => import('@/page/home');
 const me = () => import('@/page/me');
 const about = () => import('@/page/about');
-Vue.use(Router)
+Vue.use(IonicVueRouter)
 
-export default new Router({
+export default new IonicVueRouter({
     routes: [
         {
             path: '/',
@@ -16,7 +16,7 @@ export default new Router({
                     path: '/',
                     name: 'home',
                     component: home
-                },
+                },  
                 {
                     path: '/home',
                     name: 'home',
@@ -35,4 +35,4 @@ export default new Router({
             ]
         }
     ]
-});
+  })

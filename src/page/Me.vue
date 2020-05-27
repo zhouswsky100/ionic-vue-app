@@ -2,7 +2,8 @@
   <div class="me">
     <ion-app>
     <keep-alive>
-      <my-header :activeTab="activeTab">  </my-header>
+      <my-header :activeTab="activeTab"> 
+     </my-header>
     </keep-alive>
       <ion-content>
         <my-tabs></my-tabs>

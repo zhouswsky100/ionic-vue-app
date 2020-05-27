@@ -1,33 +1,23 @@
 <template>
-    <div class="header-wrapper">
-      <!--<div class="padding-heigh"></div>-->
-      <ion-header>
-        <ion-toolbar>
-          <div slot="start">
-            <slot name="start"></slot>
-          </div>
-          <ion-title>{{activeTab}}</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    </div>
+    <header class="header-wrapper">
+      <div class="left">
+        <slot name="left"></slot>
+      </div>
+      <div class="title title-center header-item"  v-text="activeTab"></div>
+      <div class="right">
+        <slot name="right"></slot>
+      </div>
+    </header>
 </template>
 
 <script>
 import {timeStrToDate} from '@/common/js/timeFormat'
 export default {
     props: {
-        maxTime: {
-            type: String,
-            default: new Date().format('yyyyMMdd')
-        },
         activeTab: {
             type: String,
-            default: ''
+            default: '首页'
         },
-        myDate: {
-            type: String,
-            default: new Date().format('yyyyMMdd')
-        }
     },
     data() {
         return {
@@ -36,37 +26,27 @@ export default {
     created() {
     },
     methods: {
-        showDateSelect() {
-            let that = this;
-            // 组件内使用
-            this.$vux.datetime.show({
-                value: timeStrToDate(this.myDate + '00000').format('yyyy-MM-dd'),
-                endDate: timeStrToDate(this.maxTime + '00000').format('yyyy-MM-dd'),
-                format: 'YYYY-MM-DD',
-                onHide () {
-                },
-                onShow () {
-                },
-                onConfirm (value) {
-                    console.log(value);
-                    value = value.replace(/-/g, '');
-                    that.$emit('emitDate', value)
-                }
-            })
-        }
     }
 }
 </script>
 
 <style lang="less" scoped>
   .header-wrapper {
-    // .padding-heigh {
-    //   height: 37px; // KPI字体上面大概是6px
-    //   background-color: rgb(248, 248, 248);
-    // }
-    .data-icon {
-      font-size: 22px;
-      margin-right: 10px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-bottom: solid 1px #ddd;
+    .left{
+          position: relative;
+          left: 5px;
+          font-size: 13px;
+    }
+    .right{
+          position: relative;
+          right: 5px;
+          font-size: 13px;
     }
   }
 </style>
