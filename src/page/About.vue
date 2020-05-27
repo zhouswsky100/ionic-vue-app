@@ -1,8 +1,9 @@
 <template>
   <div class="about">
     <ion-app>
-      <my-header :activeTab="activeTab">
-    </my-header>
+    <keep-alive>
+      <my-header :activeTab="activeTab">  </my-header>
+  </keep-alive>
       <ion-content>
         <my-tabs></my-tabs>
       </ion-content>
