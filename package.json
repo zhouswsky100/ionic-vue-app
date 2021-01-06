@@ -13,7 +13,7 @@
   "dependencies": {
     "@ionic/core": "^4.11.10",
     "@ionic/vue": "0.0.4",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "echarts": "^4.2.0-rc.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.7",
